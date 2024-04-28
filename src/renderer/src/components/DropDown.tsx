@@ -7,25 +7,27 @@ import {
 } from "@renderer/components/shadcn/select";
 import { ReactElement } from "react";
 
-type Options = {
-    op1: string,
-    op2: string
-}
 
-function DropDown({options}: {options:Options}): ReactElement{
+
+type Options = string[];
+
+
+
+export function DropDown({options, placeholder}: {options: Options, placeholder: string | number}): ReactElement{
+
     return(
-        <div className="tw-w-28">
+        <div className="hover:tw-opacity-[0.8]">
             <Select>
                 <SelectTrigger className="w-[180px]">
-                    <SelectValue placeholder={options.op1} />
+                    <SelectValue placeholder={placeholder}/>
                 </SelectTrigger>
                 <SelectContent>
-                    <SelectItem value={options.op1}>{options.op1}</SelectItem>
-                    <SelectItem value={options.op2}>{options.op2}</SelectItem>
+                    {options.map((option) => (
+                        <SelectItem value={option} key={option}>{option}</SelectItem>
+                    ))}
                 </SelectContent>
             </Select>
         </div>
-    )
+    );
 }
 
-export default DropDown;

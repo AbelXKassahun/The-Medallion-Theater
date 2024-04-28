@@ -4,38 +4,41 @@
       className
     )}
 */
+import { useNavigate } from "react-router-dom";
 
-import { ReactElement, useEffect, useState } from "react";
 
-export function Sales({salesSeats}: {salesSeats: boolean}){
-  const [text, setText] = useState('');
-  useEffect(() => {
-    if(salesSeats){
-      setText('Today\'s total sales')
-    }
-    else{
-      setText('Seats sold today')
-    }
-  }, [salesSeats]);
+import { ReactElement } from "react";
+
+
+export function Sales({text, amount}){
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate('/recent_patrons')
+  }
 
   return (
-    <div className="tw-text-white tw-w-60 tw-h-24 tw-pl-4 tw-pt-5 tw-flex-row tw-justify-center tw-items-center tw-rounded-xl tw-border tw-border-emerald-600 tw-bg-zinc-800">
+    <div onClick={() => handleClick()} className="tw-text-white tw-w-60 tw-h-24 tw-pl-4 tw-pt-5 tw-flex-row tw-justify-center tw-items-center tw-rounded-xl tw-border tw-border-emerald-600 tw-bg-zinc-800 hover:tw-border-2">
       <div className="flex">
         <h1 className="font-normal tw-text-sm tw-text-emerald-600">{text}</h1>
         {/* <span className="material-symbols-outlined">attach_money</span> */}
       </div>
-      <h1 className="font-bold tw-text-3xl">$23,546</h1>
+      <h1 className="font-bold tw-text-3xl">{amount}</h1>
     </div>
   );
 }
 
-export function NewPePr({text}: {text: string}): ReactElement{
+export function NewPr(): ReactElement{
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate('/CUproduction')
+  }
   return(
-    <div className="tw-text-white tw-w-60 tw-h-24 tw-pl-4 tw-pt-5 tw-flex-row tw-justify-center tw-items-center tw-rounded-xl tw-border tw-border-emerald-600 tw-bg-zinc-800 hover:tw-border-slate-300">
+    <div onClick={() => handleClick()} className="tw-text-white tw-w-60 tw-h-24 tw-pl-4 tw-pt-5 tw-flex-row tw-justify-center tw-items-center tw-rounded-xl tw-border tw-border-emerald-600 tw-bg-zinc-800 hover:tw-border-2">
       <div className="tw-flex tw-items-center">
         <h1 className="tw-font-normal tw-text-sm tw-text-emerald-600">Create new</h1>
       </div>
-      <h1 className="tw-font-bold tw-text-3xl">{text}</h1>
+      <h1 className="tw-font-bold tw-text-3xl">Production</h1>
     </div>
   );
 }

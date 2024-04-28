@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import {
     Card,
     CardDescription,
@@ -7,8 +8,10 @@ import {
 
 
 export default function Performance(){
+    const navigate = useNavigate();
+
     return(
-        <Card className="tw-flex  tw-pl-2">
+        <Card className="tw-flex  tw-pl-2" onClick={() => navigate('productionDetails')}>
             <div className="tw-w-16 tw-h-full tw-py-4 bg-[url('icon.png')]">
                 
             </div>

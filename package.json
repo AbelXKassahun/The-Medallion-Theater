@@ -23,11 +23,17 @@
   "dependencies": {
     "@electron-toolkit/preload": "^3.0.0",
     "@electron-toolkit/utils": "^3.0.0",
+    "@radix-ui/react-popover": "^1.0.7",
     "@radix-ui/react-select": "^2.0.0",
+    "@radix-ui/react-slot": "^1.0.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "electron-updater": "^6.1.7",
+    "localforage": "^1.10.0",
     "lucide-react": "^0.373.0",
+    "match-sorter": "^6.3.4",
+    "react-router-dom": "^6.23.0",
+    "sort-by": "^0.0.2",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7"
   },
