@@ -22,7 +22,7 @@ export default function ProductionDetails(){
             if (error) {
                 console.error('Error fetching data:', error.message);
             } else {
-                console.log(data[0]);                
+                console.log(data);                
                 
                 // @ts-ignore
                 setResults(data[0]);
@@ -36,15 +36,15 @@ export default function ProductionDetails(){
         }
     }, [result]);
     
-    const handleClick = (id) => {
-        navigate(`/book_a_seat/${id}`);
+    const handleClick = (id, seats) => {
+        navigate(`/book_a_seat/${id}/${seats}`);
     }
 
     return(
         <div className=" tw-h-full tw-px-3 tw-overflow-hidden">
             <div className="tw-mb-7 tw-flex tw-items-center tw-justify-between">
                 <h1 onClick={() => navigate(-1)} className="hover:tw-opacity-70">{"<- Back"}</h1>
-                <Button variant="destructive" onClick={() => navigate('/CUproduction')}>Update / Delete</Button>
+                <Button variant="custom" onClick={() => navigate('/CUproduction')}>Update</Button>
             </div>
             <div className="tw-flex tw-justify-between">
                 <h1 className="tw-mb-5 tw-font-semibold tw-text-2xl">{results.production_name}</h1>
@@ -58,12 +58,12 @@ export default function ProductionDetails(){
                 {results && results.performances?.map((perf) => (
                     <Button className="tw-flex tw-justify-between tw-w-full tw-mb-3" 
                             variant="custom"
-                            onClick={() => handleClick(perf.id)}
+                            onClick={() => handleClick(perf.id, perf.available_seats)}
                             key={perf.id}
                     >
                         <h1 className="tw-w-50 tw-truncate ...">{perf.showDate} At {perf.showTime}</h1>
                         <h1>{602 - perf.available_seats}/602 seats sold</h1>
-                        <div className="tw-h-6 tw-w-20 tw-border-white tw-rounded-lg tw-bg-red-500 tw-flex tw-justify-center hover:tw-opacity-70" >Delete</div>
+                        {/* <div className="tw-h-6 tw-w-20 tw-border-white tw-rounded-lg tw-bg-red-500 tw-flex tw-justify-center hover:tw-opacity-70" >Delete</div> */}
                     </Button>
                 ))}
             </div>

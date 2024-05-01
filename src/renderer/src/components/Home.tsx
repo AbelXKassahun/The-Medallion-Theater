@@ -35,7 +35,7 @@ function Home(){
             if (error) {
                 console.error('Error fetching data:', error.message);
             } else {
-                console.log(data);
+                // console.log(data);
                 
                 // @ts-ignore
                 setResults(data);

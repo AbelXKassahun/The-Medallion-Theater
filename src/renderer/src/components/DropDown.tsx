@@ -15,8 +15,19 @@ type Options = string[];
 
 
 export function DropDown({options, placeholder, get, setter}: {options: Options, placeholder: string | number, get: string, setter: React.Dispatch<React.SetStateAction<string>>}): ReactElement{
-    const handleFilterChange = (selected) => {
-        setter(selected);
+    const handleFilterChange = (selected) => {        
+        if(selected === "For 4 days"){
+            setter("4");
+        }
+        else if(selected === "For a week"){
+            setter("5");
+        }
+        else if(selected === "For two weeks"){
+            setter("15");
+        }
+        else{
+            setter(selected);
+        }
     }
     return(
         <div className="hover:tw-opacity-[0.8]">

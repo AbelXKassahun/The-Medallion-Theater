@@ -14,7 +14,7 @@ export default function RecentPatrons(){
             created_at,
             bought_seats,
             cost,
-            patreons(name, email)
+            patreons(id, name, email)
         `)
         .order('created_at', { ascending: false });
         
@@ -29,7 +29,7 @@ export default function RecentPatrons(){
         <div>
             <h1 className="tw-mb-3">Recently bought tickets</h1>
             {recentPatrons.map((pat: any) => (
-                <div className="tw-w-full tw-h-20 tw-mb-3 tw-px-3 tw-flex tw-items-center tw-gap-3 tw-border tw-rounded-lg tw-border-emerald-600" key={pat.patreons.name}>
+                <div className="tw-w-full tw-h-20 tw-mb-3 tw-px-3 tw-flex tw-items-center tw-gap-3 tw-border tw-rounded-lg tw-border-emerald-600" key={pat.id}>
                     {/* patron avatar */}
                     <div className="tw-h-4/5 tw-w-16 tw-border flex tw-flex-none tw-border-emerald-600 tw-rounded-full"></div>
                     {/* patron imfo */}

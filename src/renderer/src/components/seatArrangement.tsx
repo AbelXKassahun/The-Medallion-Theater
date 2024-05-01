@@ -47,7 +47,7 @@ export default function SeatArrangement({reserved_seats, setnewReserve, setnumOf
                         suffix = j-2;
                     }
                     
-                    for(let x = 0; x < 8; x++){                        
+                    for(let x = 0; x < reserved_seats.length; x++){                        
                         if((rows[i] + suffix) === reserved_seats[x]){
                             alr_selected = true;
                         }
