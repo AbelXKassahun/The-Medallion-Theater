@@ -1,10 +1,12 @@
 // import Versions from './components/Versions'
 // import electronLogo from './assets/electron.svg'
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
 
+
+import {
+    createBrowserRouter,
+    RouterProvider,
+} from "react-router-dom";
+  
 import Home from "@renderer/components/Home";
 import RecentPatrons from "@renderer/components/recentPatrons";
 import { CUproduction } from "@renderer/components/CU";
@@ -25,11 +27,11 @@ const router = createBrowserRouter([
         element: <CUproduction/>
       },
       {
-        path: "/productionDetails",
+        path: "productionDetails/:result",
         element: <ProductionDetails/>
       },
       {
-        path:"/book_a_seat",
+        path:"/book_a_seat/:id",
         element: <Booking/>
       }      
     ],
@@ -39,9 +41,9 @@ const router = createBrowserRouter([
 function App(): JSX.Element {
   // const ipcHandle = (): void => window.electron.ipcRenderer.send('ping')
   return (
-    <div className="tw-h-screen tw-overflow-y-hidden tw-bg-zinc-900">
-      <RouterProvider router={router} />
-    </div>
+      <div className="tw-h-screen tw-overflow-y-hidden tw-bg-zinc-900">
+        <RouterProvider router={router} />
+      </div>
   )
 }
 

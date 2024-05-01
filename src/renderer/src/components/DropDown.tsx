@@ -5,7 +5,8 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@renderer/components/shadcn/select";
-import { ReactElement } from "react";
+
+import React,{ ReactElement } from "react";
 
 
 
@@ -13,17 +14,19 @@ type Options = string[];
 
 
 
-export function DropDown({options, placeholder}: {options: Options, placeholder: string | number}): ReactElement{
-
+export function DropDown({options, placeholder, get, setter}: {options: Options, placeholder: string | number, get: string, setter: React.Dispatch<React.SetStateAction<string>>}): ReactElement{
+    const handleFilterChange = (selected) => {
+        setter(selected);
+    }
     return(
         <div className="hover:tw-opacity-[0.8]">
-            <Select>
+            <Select onValueChange={(value) => handleFilterChange(value)}>
                 <SelectTrigger className="w-[180px]">
                     <SelectValue placeholder={placeholder}/>
                 </SelectTrigger>
                 <SelectContent>
                     {options.map((option) => (
-                        <SelectItem value={option} key={option}>{option}</SelectItem>
+                        <SelectItem value={option} onClick={() => console.log('here')} key={option}>{option}</SelectItem>
                     ))}
                 </SelectContent>
             </Select>
